@@ -4,25 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Curiosity — fixates.io</title>
+  <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:image" content="/icons/og-image.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="/" class="logo">Curiosity</a>
-      <ul>
-        <li><a href="/privacy.html">Privacy Policy</a></li>
-        <li><a href="/terms.html">Terms of Service</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <h1>Curiosity</h1>
-    <p>A project by <a href="https://fixates.io">fixates.io</a>.</p>
-  </main>
-  <footer>
-    <p>&copy; 2026 fixates.io. All rights reserved.</p>
-    <p><a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p>
-  </footer>
+  <div class="page-wrapper">
+    <header>
+      <nav>
+        <a href="/" class="logo">
+          <img src="/icons/favicon-32x32.png" alt="" width="32" height="32">
+          <span>Curiosity</span>
+        </a>
+        <ul>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="/terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <img src="/icons/icon-128x128.png" alt="Curiosity app icon" class="hero-icon" width="128" height="128">
+        <h1>Curiosity</h1>
+        <p class="tagline">A private family productivity app by <a href="https://fixates.io">fixates.io</a></p>
+      </div>
+
+      <div class="card">
+        <h2><span class="icon"></span>What is Curiosity?</h2>
+        <p>Curiosity is a personal productivity application designed for the app owner and their immediate family. It connects to your Google account to help you manage your calendar and send emails — all from a single, unified interface.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="icon"></span>How Curiosity Uses Google APIs</h2>
+        <p>To provide its features, Curiosity requests access to the following Google services on your behalf:</p>
+        <ul>
+          <li><strong>Google Calendar (read &amp; write)</strong> — Curiosity reads your calendar list and events to display your schedule, and can create, update, or delete events as you direct.</li>
+          <li><strong>Gmail (send only)</strong> — Curiosity can send emails on your behalf when you ask it to. It does not read, modify, or delete any existing emails in your mailbox.</li>
+        </ul>
+        <p>Curiosity only accesses the minimum data necessary to provide these features. You can revoke access at any time from your <a href="https://myaccount.google.com/permissions">Google Account permissions</a>. For full details on the specific OAuth scopes requested and how your data is handled, please see our <a href="/privacy.html">Privacy Policy</a>.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="icon"></span>Contact</h2>
+        <p>If you have questions about Curiosity, please contact us at <a href="mailto:curiosity@fixates.io">curiosity@fixates.io</a>.</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 fixates.io. All rights reserved.</p>
+      <p><a href="/privacy.html">Privacy Policy</a> <span class="footer-divider">&middot;</span> <a href="/terms.html">Terms of Service</a></p>
+    </footer>
+  </div>
 </body>
 </html>

@@ -2,29 +2,24 @@
   "name": "curiosity.fixates.io",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
+  "runArgs": [
+    "-v", "claude-home:/home/vscode/.claude",
+    "-v", "${localEnv:HOME}/.claude/.credentials.json:/home/vscode/.claude-host-credentials.json:z",
+    "-v", "${localEnv:HOME}/.claude.json:/home/vscode/.claude-host-config.json:z",
+    "-v", "${localEnv:HOME}/.config/gh:/home/vscode/.config/gh:z",
+    "-v", "${localEnv:HOME}/.gitconfig:/home/vscode/.gitconfig:z"
+  ],
+
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts"
-    }
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-
-  "mounts": [
-    {
-      "source": "${localEnv:HOME}/.claude",
-      "target": "/home/vscode/.claude",
-      "type": "bind"
-    },
-    {
-      "source": "${localEnv:HOME}/.claude.json",
-      "target": "/home/vscode/.claude.json",
-      "type": "bind"
-    }
-  ],
 
   "forwardPorts": [5000],
 
-  "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
+  "postCreateCommand": "GCS_BUCKET='https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases' && VERSION=$(curl -fsSL $GCS_BUCKET/latest) && curl -fsSL -o /tmp/claude $GCS_BUCKET/$VERSION/linux-x64/claude && chmod +x /tmp/claude && mkdir -p ~/.local/bin && mv /tmp/claude ~/.local/bin/claude && echo 'export PATH=\"$HOME/.local/bin:$PATH\"' >> ~/.bashrc && echo 'export PATH=\"$HOME/.local/bin:$PATH\"' >> ~/.zshrc",
+
+  "postStartCommand": "sudo chown vscode:vscode ~/.claude && cp ~/.claude-host-credentials.json ~/.claude/.credentials.json 2>/dev/null; cp ~/.claude-host-config.json ~/.claude.json 2>/dev/null; true",
 
   "remoteUser": "vscode",
 
@@ -32,11 +27,18 @@
     "vscode": {
       "extensions": [
         "ritwickdey.LiveServer",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "ecmel.vscode-html-css",
+        "naumovs.color-highlight",
+        "christian-kohler.path-intellisense",
+        "george-alisson.html-preview-vscode"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
-        "liveServer.settings.port": 5500
+        "liveServer.settings.port": 5500,
+        "editor.linkedEditing": true
       }
     }
   }
